@@ -753,6 +753,7 @@ Marke: XXXLutz (Möbelhaus, Slogan: "Bei XXXLutz lebe ich auf")
     setStepActive('analysis');
     switchTab('analysis');
 
+    let analysisRaw = '';
     await callClaude(`Du bist ein Marketing-Experte für XXXLutz. Analysiere das folgende Produkt und gib eine JSON-Antwort zurück – NUR JSON, kein Text davor oder danach, keine Backticks.
 
 ${productCtx}
@@ -769,11 +770,10 @@ Antworte mit folgendem JSON-Schema:
   "tonalitaet": "z.B. Warm, einladend, familienorientiert",
   "zusammenfassung": "2-3 Sätze Zusammenfassung der Zielgruppe"
 }`, (chunk) => {
+      analysisRaw = chunk;
       try { renderAnalysis(chunk, true); } catch {}
     });
 
-    // Parse the final result
-    const analysisRaw = results._analysisRaw || '';
     renderAnalysis(analysisRaw, false);
     setStepDone('analysis');
     results.analysis = true;
