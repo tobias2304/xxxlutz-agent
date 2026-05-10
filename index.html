@@ -41,6 +41,7 @@
   }
   .topbar-logo { color: #fff; font-size: 17px; font-weight: 700; letter-spacing: .03em; display: flex; align-items: center; gap: 10px; }
   .topbar-logo .badge { background: rgba(255,255,255,.2); font-size: 11px; font-weight: 500; padding: 3px 8px; border-radius: 20px; letter-spacing: .05em; }
+  .topbar-right { display: flex; align-items: center; gap: 10px; }
   .api-btn {
     background: rgba(255,255,255,.15);
     border: 1px solid rgba(255,255,255,.3);
@@ -50,9 +51,10 @@
     font-size: 13px;
     cursor: pointer;
     transition: background .15s;
+    display: flex; align-items: center; gap: 6px;
   }
   .api-btn:hover { background: rgba(255,255,255,.25); }
-  .api-indicator { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 6px; background: #ff6b6b; }
+  .api-indicator { width: 8px; height: 8px; border-radius: 50%; background: #ff6b6b; flex-shrink: 0; }
   .api-indicator.ok { background: #51cf66; }
 
   /* ── LAYOUT ── */
@@ -78,48 +80,47 @@
     align-items: center;
     gap: 7px;
   }
-  .card-title .dot { width: 6px; height: 6px; background: var(--red); border-radius: 50%; }
+  .card-title .dot { width: 6px; height: 6px; background: var(--red); border-radius: 50%; flex-shrink: 0; }
+
+  /* ── STRATEGY BADGE ── */
+  .strategy-info {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border-radius: var(--radius-sm);
+    padding: .85rem 1rem;
+    margin-bottom: 1.2rem;
+    border: 1px solid #2a2a4e;
+  }
+  .strategy-info-title { font-size: 11px; font-weight: 700; color: #8899BB; text-transform: uppercase; letter-spacing: .08em; margin-bottom: .5rem; }
+  .strategy-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+  .strategy-tag {
+    font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 20px; letter-spacing: .04em;
+  }
+  .strategy-tag.role   { background: rgba(227,6,19,.25); color: #ff8080; border: 1px solid rgba(227,6,19,.3); }
+  .strategy-tag.cot    { background: rgba(245,166,35,.2); color: #f5a623; border: 1px solid rgba(245,166,35,.3); }
+  .strategy-tag.few    { background: rgba(43,158,95,.2); color: #51cf66; border: 1px solid rgba(43,158,95,.3); }
+  .strategy-tag.const  { background: rgba(100,160,255,.2); color: #74b0ff; border: 1px solid rgba(100,160,255,.3); }
 
   /* ── FORM ── */
   .field { margin-bottom: 1rem; }
   .field label { display: block; font-size: 12px; font-weight: 600; color: var(--gray-600); margin-bottom: 5px; letter-spacing: .04em; }
   .field input, .field textarea, .field select {
-    width: 100%;
-    font-family: var(--font);
-    font-size: 14px;
-    padding: 9px 12px;
-    border: 1px solid var(--gray-200);
-    border-radius: var(--radius-sm);
-    background: var(--white);
-    color: var(--gray-800);
-    transition: border-color .15s, box-shadow .15s;
-    outline: none;
-    resize: vertical;
+    width: 100%; font-family: var(--font); font-size: 14px;
+    padding: 9px 12px; border: 1px solid var(--gray-200); border-radius: var(--radius-sm);
+    background: var(--white); color: var(--gray-800);
+    transition: border-color .15s, box-shadow .15s; outline: none; resize: vertical;
   }
   .field input:focus, .field textarea:focus, .field select:focus {
-    border-color: var(--red);
-    box-shadow: 0 0 0 3px rgba(227,6,19,.08);
+    border-color: var(--red); box-shadow: 0 0 0 3px rgba(227,6,19,.08);
   }
   .field textarea { min-height: 80px; }
   .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
 
   /* ── GENERATE BUTTON ── */
   .btn-generate {
-    width: 100%;
-    padding: 13px;
-    background: var(--red);
-    color: #fff;
-    border: none;
-    border-radius: var(--radius-sm);
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background .15s, transform .1s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    margin-top: .25rem;
+    width: 100%; padding: 13px; background: var(--red); color: #fff;
+    border: none; border-radius: var(--radius-sm); font-size: 15px; font-weight: 600;
+    cursor: pointer; transition: background .15s, transform .1s;
+    display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: .25rem;
   }
   .btn-generate:hover:not(:disabled) { background: var(--red-dark); }
   .btn-generate:active:not(:disabled) { transform: scale(.99); }
@@ -128,39 +129,39 @@
   /* ── PROGRESS STEPS ── */
   .steps { display: flex; flex-direction: column; gap: 6px; margin-bottom: 1.5rem; }
   .step {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 8px 10px;
-    border-radius: var(--radius-sm);
-    font-size: 13px;
-    color: var(--gray-400);
-    background: var(--gray-50);
-    border: 1px solid var(--gray-100);
-    transition: all .2s;
+    display: flex; align-items: center; gap: 10px; padding: 8px 10px;
+    border-radius: var(--radius-sm); font-size: 13px; color: var(--gray-400);
+    background: var(--gray-50); border: 1px solid var(--gray-100); transition: all .2s;
   }
   .step.active { color: var(--red); border-color: var(--red-muted); background: var(--red-light); }
-  .step.done { color: #2d9e5f; border-color: #c3e6cf; background: #f0faf4; }
-  .step-icon { width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; background: var(--gray-200); color: var(--gray-600); }
+  .step.done   { color: #2d9e5f; border-color: #c3e6cf; background: #f0faf4; }
+  .step.error  { color: #c0392b; border-color: #f5c6cb; background: #fdf0f0; }
+  .step-icon {
+    width: 20px; height: 20px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 700; flex-shrink: 0;
+    background: var(--gray-200); color: var(--gray-600);
+  }
   .step.active .step-icon { background: var(--red); color: #fff; }
-  .step.done .step-icon { background: #2d9e5f; color: #fff; }
+  .step.done   .step-icon { background: #2d9e5f; color: #fff; }
+  .step.error  .step-icon { background: #c0392b; color: #fff; }
+  .step-meta { font-size: 11px; color: var(--gray-400); margin-left: auto; white-space: nowrap; }
 
   /* ── RESULTS TABS ── */
   .tabs { display: flex; gap: 4px; margin-bottom: 1rem; flex-wrap: wrap; }
   .tab {
-    padding: 7px 14px;
-    font-size: 13px;
-    font-weight: 500;
-    border-radius: var(--radius-sm);
-    cursor: pointer;
-    border: 1px solid var(--gray-200);
-    background: var(--white);
-    color: var(--gray-600);
-    transition: all .15s;
+    padding: 7px 14px; font-size: 13px; font-weight: 500; border-radius: var(--radius-sm);
+    cursor: pointer; border: 1px solid var(--gray-200); background: var(--white);
+    color: var(--gray-600); transition: all .15s; position: relative;
   }
   .tab:hover { border-color: var(--red-muted); color: var(--red); }
   .tab.active { background: var(--red); color: #fff; border-color: var(--red); }
-  .tab-badge { font-size: 10px; background: rgba(255,255,255,.3); padding: 1px 5px; border-radius: 8px; margin-left: 4px; }
+  .tab.loading::after {
+    content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px;
+    background: var(--red); border-radius: 2px;
+    animation: tabpulse 1s ease-in-out infinite;
+  }
+  @keyframes tabpulse { 0%,100%{opacity:.3} 50%{opacity:1} }
 
   /* ── RESULT PANELS ── */
   .tab-panel { display: none; }
@@ -169,51 +170,45 @@
   /* ── RESULT SECTION ── */
   .result-section { margin-bottom: 1.25rem; }
   .result-section-title {
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: .08em;
-    color: var(--gray-600);
-    margin-bottom: .5rem;
-    display: flex;
-    align-items: center;
-    gap: 6px;
+    font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+    color: var(--gray-600); margin-bottom: .5rem;
+    display: flex; align-items: center; gap: 6px;
   }
   .result-section-title::after { content: ''; flex: 1; height: 1px; background: var(--gray-200); }
   .result-text {
-    background: var(--gray-50);
-    border: 1px solid var(--gray-200);
-    border-radius: var(--radius-sm);
-    padding: 1rem 1.1rem;
-    font-size: 14px;
-    line-height: 1.75;
-    color: var(--gray-800);
-    white-space: pre-wrap;
-    min-height: 60px;
-    position: relative;
+    background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: var(--radius-sm);
+    padding: 1rem 1.1rem; font-size: 14px; line-height: 1.75; color: var(--gray-800);
+    white-space: pre-wrap; min-height: 60px; position: relative;
   }
   .result-text.streaming::after {
-    content: '▋';
-    animation: blink .7s step-end infinite;
-    color: var(--red);
-    margin-left: 2px;
+    content: '▋'; animation: blink .7s step-end infinite; color: var(--red); margin-left: 2px;
   }
   @keyframes blink { 50% { opacity: 0; } }
 
+  /* ── WORD COUNT BADGE ── */
+  .word-count { font-size: 11px; color: var(--gray-400); margin-top: .35rem; text-align: right; }
+  .word-count.warn { color: #e67e22; }
+  .word-count.ok   { color: #2d9e5f; }
+
+  /* ── CHAR COUNT (Ads) ── */
+  .char-limit-row { display: flex; flex-direction: column; gap: 6px; margin-bottom: .75rem; }
+  .char-field { display: grid; grid-template-columns: 130px 1fr; gap: .5rem; align-items: center; }
+  .char-label { font-size: 12px; color: var(--gray-600); font-weight: 600; }
+  .char-bar-wrap { display: flex; align-items: center; gap: 8px; }
+  .char-bar { flex: 1; height: 4px; background: var(--gray-200); border-radius: 2px; overflow: hidden; }
+  .char-bar-fill { height: 100%; border-radius: 2px; background: #2d9e5f; transition: width .3s; }
+  .char-bar-fill.warn { background: #e67e22; }
+  .char-bar-fill.over { background: var(--red); }
+  .char-num { font-size: 11px; color: var(--gray-400); white-space: nowrap; }
+
   /* ── KEYWORD CHIPS ── */
   .chips { display: flex; flex-wrap: wrap; gap: 7px; padding: .75rem; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: var(--radius-sm); min-height: 42px; }
-  .chip {
-    padding: 4px 11px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: transform .1s;
-  }
+  .chip { padding: 4px 11px; border-radius: 20px; font-size: 12px; font-weight: 500; cursor: pointer; transition: transform .1s; }
   .chip:hover { transform: scale(1.04); }
-  .chip.primary { background: var(--red-light); color: var(--red); border: 1px solid var(--red-muted); }
-  .chip.secondary { background: #e8f4ff; color: #1a6fb5; border: 1px solid #c2ddf5; }
-  .chip.long { background: #f0faf4; color: #2d7a50; border: 1px solid #b8dfc9; }
+  .chip.primary  { background: var(--red-light); color: var(--red); border: 1px solid var(--red-muted); }
+  .chip.secondary{ background: #e8f4ff; color: #1a6fb5; border: 1px solid #c2ddf5; }
+  .chip.long     { background: #f0faf4; color: #2d7a50; border: 1px solid #b8dfc9; }
+  .chip.neg      { background: #fff8e1; color: #b8860b; border: 1px solid #ffe08a; }
 
   /* ── AUDIENCE CARD ── */
   .audience-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
@@ -221,96 +216,62 @@
   .audience-item-label { font-size: 11px; font-weight: 700; color: var(--gray-400); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 4px; }
   .audience-item-value { font-size: 13px; color: var(--gray-800); line-height: 1.5; }
 
-  /* ── COPY BUTTON ── */
-  .copy-row { display: flex; justify-content: flex-end; margin-top: .5rem; }
-  .btn-copy {
-    padding: 6px 14px;
-    font-size: 12px;
-    font-weight: 600;
-    background: var(--white);
-    border: 1px solid var(--gray-200);
-    border-radius: var(--radius-sm);
-    color: var(--gray-600);
-    cursor: pointer;
-    transition: all .15s;
-    display: flex;
-    align-items: center;
-    gap: 5px;
+  /* ── COPY & REGEN BUTTONS ── */
+  .action-row { display: flex; justify-content: flex-end; gap: .5rem; margin-top: .5rem; }
+  .btn-copy, .btn-regen {
+    padding: 6px 14px; font-size: 12px; font-weight: 600;
+    background: var(--white); border: 1px solid var(--gray-200);
+    border-radius: var(--radius-sm); cursor: pointer; transition: all .15s;
+    display: flex; align-items: center; gap: 5px;
   }
-  .btn-copy:hover { border-color: var(--red); color: var(--red); }
+  .btn-copy  { color: var(--gray-600); }
+  .btn-regen { color: var(--gray-600); }
+  .btn-copy:hover  { border-color: var(--red); color: var(--red); }
+  .btn-regen:hover { border-color: #1a6fb5; color: #1a6fb5; }
   .btn-copy.copied { background: #f0faf4; border-color: #b8dfc9; color: #2d7a50; }
 
-  /* ── EMPTY / PLACEHOLDER ── */
-  .empty {
-    text-align: center;
-    padding: 3rem 1.5rem;
-    color: var(--gray-400);
+  /* ── EXPORT BUTTON ── */
+  .btn-export {
+    padding: 6px 14px; font-size: 12px; font-weight: 600;
+    background: var(--white); border: 1px solid var(--gray-200);
+    border-radius: var(--radius-sm); cursor: pointer; color: var(--gray-600);
+    transition: all .15s; display: flex; align-items: center; gap: 5px;
   }
+  .btn-export:hover { border-color: #2d9e5f; color: #2d9e5f; }
+
+  /* ── EMPTY / PLACEHOLDER ── */
+  .empty { text-align: center; padding: 3rem 1.5rem; color: var(--gray-400); }
   .empty-icon { font-size: 40px; margin-bottom: .75rem; }
   .empty p { font-size: 14px; line-height: 1.6; }
 
   /* ── SPINNER ── */
-  .spinner {
-    width: 16px; height: 16px;
-    border: 2.5px solid rgba(255,255,255,.35);
-    border-top-color: #fff;
-    border-radius: 50%;
-    animation: spin .65s linear infinite;
-    flex-shrink: 0;
-  }
-  .spinner-red {
-    width: 14px; height: 14px;
-    border: 2px solid var(--red-muted);
-    border-top-color: var(--red);
-    border-radius: 50%;
-    animation: spin .65s linear infinite;
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: 6px;
-  }
+  .spinner { width: 16px; height: 16px; border: 2.5px solid rgba(255,255,255,.35); border-top-color: #fff; border-radius: 50%; animation: spin .65s linear infinite; flex-shrink: 0; }
   @keyframes spin { to { transform: rotate(360deg); } }
 
+  /* ── CONTEXT CHAIN INDICATOR ── */
+  .chain-notice {
+    font-size: 11px; color: #1a6fb5; background: #e8f4ff; border: 1px solid #c2ddf5;
+    border-radius: var(--radius-sm); padding: 6px 10px; margin-bottom: .75rem;
+    display: flex; align-items: center; gap: 6px;
+  }
+
   /* ── MODAL ── */
-  .modal-overlay {
-    display: none;
-    position: fixed; inset: 0;
-    background: rgba(0,0,0,.45);
-    z-index: 200;
-    align-items: center;
-    justify-content: center;
-  }
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.45); z-index: 200; align-items: center; justify-content: center; }
   .modal-overlay.open { display: flex; }
-  .modal {
-    background: var(--white);
-    border-radius: var(--radius);
-    padding: 1.75rem;
-    width: 100%;
-    max-width: 440px;
-    box-shadow: var(--shadow-lg);
-  }
+  .modal { background: var(--white); border-radius: var(--radius); padding: 1.75rem; width: 100%; max-width: 440px; box-shadow: var(--shadow-lg); }
   .modal h2 { font-size: 18px; margin-bottom: .4rem; }
-  .modal p { font-size: 13px; color: var(--gray-600); margin-bottom: 1.25rem; line-height: 1.6; }
+  .modal p  { font-size: 13px; color: var(--gray-600); margin-bottom: 1.25rem; line-height: 1.6; }
   .modal-actions { display: flex; gap: .75rem; justify-content: flex-end; margin-top: 1.25rem; }
   .btn-cancel { padding: 9px 18px; background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-sm); font-size: 14px; cursor: pointer; color: var(--gray-600); }
-  .btn-save { padding: 9px 18px; background: var(--red); border: none; border-radius: var(--radius-sm); font-size: 14px; cursor: pointer; color: #fff; font-weight: 600; }
+  .btn-save   { padding: 9px 18px; background: var(--red); border: none; border-radius: var(--radius-sm); font-size: 14px; cursor: pointer; color: #fff; font-weight: 600; }
   .btn-save:hover { background: var(--red-dark); }
 
-  /* ── PRODUCT HISTORY ── */
-  .history-list { display: flex; flex-direction: column; gap: 6px; margin-top: .5rem; max-height: 140px; overflow-y: auto; }
-  .history-item {
-    padding: 7px 10px;
-    border: 1px solid var(--gray-200);
-    border-radius: var(--radius-sm);
-    font-size: 13px;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: border-color .15s;
-  }
+  /* ── HISTORY ── */
+  .history-list { display: flex; flex-direction: column; gap: 6px; margin-top: .5rem; max-height: 160px; overflow-y: auto; }
+  .history-item { padding: 7px 10px; border: 1px solid var(--gray-200); border-radius: var(--radius-sm); font-size: 13px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: border-color .15s; }
   .history-item:hover { border-color: var(--red-muted); background: var(--red-light); }
   .history-item-name { font-weight: 500; }
-  .history-item-cat { font-size: 11px; color: var(--gray-400); margin-top: 2px; }
+  .history-item-cat  { font-size: 11px; color: var(--gray-400); margin-top: 2px; }
   .history-del { font-size: 16px; color: var(--gray-400); padding: 0 3px; }
   .history-del:hover { color: var(--red); }
 
@@ -330,17 +291,22 @@
     XXXLutz
     <span class="badge">KI-Textagent</span>
   </div>
-  <button class="api-btn" onclick="openApiModal()">
-    <span class="api-indicator" id="api-indicator"></span>
-    API-Key
-  </button>
+  <div class="topbar-right">
+    <button class="btn-export" id="export-btn" onclick="exportAll()" style="display:none">
+      ↓ Alle exportieren
+    </button>
+    <button class="api-btn" onclick="openApiModal()">
+      <span class="api-indicator" id="api-indicator"></span>
+      API-Key
+    </button>
+  </div>
 </div>
 
 <!-- API KEY MODAL -->
 <div class="modal-overlay" id="api-modal">
   <div class="modal">
     <h2>Anthropic API-Key</h2>
-    <p>Gib deinen Anthropic API-Key ein. Er wird nur in deinem Browser gespeichert und nie übertragen.</p>
+    <p>Gib deinen Anthropic API-Key ein. Er wird nur lokal in deinem Browser gespeichert und nie an externe Server übertragen.</p>
     <div class="field">
       <label>API-KEY</label>
       <input type="password" id="api-key-input" placeholder="sk-ant-..." />
@@ -364,6 +330,17 @@
       <div class="card">
         <div class="card-title"><span class="dot"></span> Produkt eingeben</div>
 
+        <!-- Strategy info badge -->
+        <div class="strategy-info">
+          <div class="strategy-info-title">Aktive Prompt-Strategien</div>
+          <div class="strategy-tags">
+            <span class="strategy-tag role">Role Prompting</span>
+            <span class="strategy-tag cot">Chain-of-Thought</span>
+            <span class="strategy-tag few">Few-Shot</span>
+            <span class="strategy-tag const">Constraint</span>
+          </div>
+        </div>
+
         <div class="field">
           <label>PRODUKTNAME *</label>
           <input id="pname" type="text" placeholder="z.B. Sofa PORTO 3-Sitzer" />
@@ -373,17 +350,17 @@
             <label>KATEGORIE</label>
             <select id="pcat">
               <option value="">– Kategorie –</option>
-              <option>Sofas & Couches</option>
-              <option>Betten & Matratzen</option>
+              <option>Sofas &amp; Couches</option>
+              <option>Betten &amp; Matratzen</option>
               <option>Kleiderschränke</option>
-              <option>Esstische & Stühle</option>
+              <option>Esstische &amp; Stühle</option>
               <option>Küchen</option>
               <option>Badmöbel</option>
               <option>Büromöbel</option>
-              <option>Outdoor & Garten</option>
+              <option>Outdoor &amp; Garten</option>
               <option>Beleuchtung</option>
-              <option>Teppiche & Textilien</option>
-              <option>Accessoires & Deko</option>
+              <option>Teppiche &amp; Textilien</option>
+              <option>Accessoires &amp; Deko</option>
               <option>Kleingeräte</option>
             </select>
           </div>
@@ -394,7 +371,7 @@
         </div>
         <div class="field">
           <label>PRODUKTDETAILS</label>
-          <textarea id="pdesc" placeholder="Maße, Materialien, Farben, Besonderheiten, Aktionen... Je mehr desto besser!"></textarea>
+          <textarea id="pdesc" placeholder="Maße, Materialien, Farben, Besonderheiten... Je mehr desto besser!"></textarea>
         </div>
         <div class="field-row">
           <div class="field">
@@ -414,7 +391,7 @@
 
         <button class="btn-generate" id="gen-btn" onclick="runAgent()">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="white" stroke-width="1.5"/><path d="M5.5 8l2 2 3-3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Analyse & Texte generieren
+          Analyse &amp; Texte generieren
         </button>
       </div>
 
@@ -435,10 +412,12 @@
       <div class="card" id="results-card">
         <div id="results-placeholder" class="empty">
           <div class="empty-icon">✦</div>
-          <p>Gib ein Produkt ein und klicke auf<br><strong>„Analyse &amp; Texte generieren"</strong>.<br><br>Der Agent analysiert automatisch Zielgruppe, Keywords und erstellt alle Texte.</p>
+          <p>Gib ein Produkt ein und klicke auf<br><strong>„Analyse &amp; Texte generieren"</strong>.<br><br>Der Agent analysiert automatisch Zielgruppe und Keywords, und erstellt alle Texte — mit Kontext-Weitergabe zwischen den Schritten.</p>
         </div>
         <div id="results-content" style="display:none">
-          <div class="tabs" id="tabs"></div>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:.75rem; flex-wrap:wrap; gap:.5rem;">
+            <div class="tabs" id="tabs" style="margin-bottom:0"></div>
+          </div>
           <div id="tab-panels"></div>
         </div>
       </div>
@@ -448,22 +427,62 @@
 </div>
 
 <script>
-// ── STATE ──
+// ═══════════════════════════════════════════════════════
+// CONFIGURATION
+// ═══════════════════════════════════════════════════════
+
+// Global system prompt: Role Prompting (applied to all steps)
+const SYSTEM_PROMPT = `Du bist der KI-Textagent von XXXLutz, Europas größtem Möbelhändler mit über 700.000 Artikeln.
+Du erstellst professionelle, SEO-optimierte Marketingtexte auf Basis von Produktdaten.
+Deine Texte sind präzise, markenkonsistent, emotionsfähig und zielgruppengerecht.
+XXXLutz-Slogan: "Bei XXXLutz lebe ich auf."
+Wichtige Regeln:
+- Erfinde KEINE Produktdetails, Maße oder Materialien, die nicht angegeben sind
+- Halte dich strikt an vorgegebene Zeichenlimits und Formate
+- Antworte immer auf Deutsch, es sei denn, ein anderer Markt wird angegeben
+- Wenn Informationen fehlen, arbeite mit dem, was vorhanden ist`;
+
+// Few-Shot Beispiel (für Produktbeschreibung Schritt 3)
+const FEW_SHOT_EXAMPLE = `
+STILREFERENZ – so klingt eine gute XXXLutz-Produktbeschreibung:
+
+Produktname: Sofa VENEZIA 2-Sitzer
+Beispielbeschreibung:
+"Manchmal braucht es nicht viel, um ein Zuhause perfekt zu machen – manchmal reicht ein Sofa. Das VENEZIA bringt südeuropäisches Lebensgefühl in Ihr Wohnzimmer: weiche Polsterung in warmem Sandbeige, klare Linien ohne Schnörkel, und eine Sitzhöhe, die zum stundenlangen Verweilen einlädt. Das hochwertige Strukturgewebe ist strapazierfähig und pflegeleicht – ideal für Familien, die Stil und Alltag nicht trennen wollen. Mit dem VENEZIA entscheiden Sie sich nicht nur für ein Möbelstück, sondern für ein Stück mehr Lebensqualität."`;
+
+// Token limits per step
+const TOKEN_LIMITS = {
+  analysis:    900,
+  keywords:    700,
+  description: 1600,
+  ad:          900,
+  social:      1300,
+  email:       1600,
+};
+
 const STEPS_DEF = [
-  { id: 'analysis', label: 'Zielgruppe & Positionierung analysieren' },
-  { id: 'keywords', label: 'Keywords & SEO-Begriffe generieren' },
-  { id: 'description', label: 'Produktbeschreibung erstellen' },
-  { id: 'ad', label: 'Werbeanzeige erstellen' },
-  { id: 'social', label: 'Social-Media-Post erstellen' },
-  { id: 'email', label: 'E-Mail-Kampagnentext erstellen' },
+  { id: 'analysis',    label: 'Zielgruppe & Positionierung analysieren',   strategy: 'Role + CoT' },
+  { id: 'keywords',    label: 'Keywords & SEO-Begriffe generieren',         strategy: 'Role + Constraint' },
+  { id: 'description', label: 'Produktbeschreibung erstellen',              strategy: 'Role + Few-Shot + Constraint + CoT' },
+  { id: 'ad',          label: 'Werbeanzeige erstellen',                     strategy: 'Role + Constraint + CoT' },
+  { id: 'social',      label: 'Social-Media-Post erstellen',                strategy: 'Role + Constraint' },
+  { id: 'email',       label: 'E-Mail-Kampagnentext erstellen',             strategy: 'Role + Constraint' },
 ];
 
-let results = {};
-let currentStep = -1;
-let history = JSON.parse(localStorage.getItem('xl_history') || '[]');
+// ═══════════════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════════════
 
-// ── API KEY ──
-function getApiKey() { return localStorage.getItem('xl_api_key') || ''; }
+let resultData   = {};   // { stepId: rawText }
+let currentProduct = null;
+let history = JSON.parse(localStorage.getItem('xl_history') || '[]');
+let activeTab = 'analysis';
+
+// ═══════════════════════════════════════════════════════
+// API KEY
+// ═══════════════════════════════════════════════════════
+
+function getApiKey()  { return localStorage.getItem('xl_api_key') || ''; }
 function saveApiKey() {
   const k = document.getElementById('api-key-input').value.trim();
   if (!k) return;
@@ -471,7 +490,7 @@ function saveApiKey() {
   updateApiIndicator();
   closeApiModal();
 }
-function openApiModal() {
+function openApiModal()  {
   document.getElementById('api-key-input').value = getApiKey();
   document.getElementById('api-modal').classList.add('open');
 }
@@ -480,9 +499,12 @@ function updateApiIndicator() {
   document.getElementById('api-indicator').className = 'api-indicator' + (getApiKey() ? ' ok' : '');
 }
 
-// ── HISTORY ──
+// ═══════════════════════════════════════════════════════
+// HISTORY
+// ═══════════════════════════════════════════════════════
+
 function saveHistory(product) {
-  history = [product, ...history.filter(h => h.name !== product.name)].slice(0, 6);
+  history = [product, ...history.filter(h => h.name !== product.name)].slice(0, 8);
   localStorage.setItem('xl_history', JSON.stringify(history));
   renderHistory();
 }
@@ -495,7 +517,7 @@ function renderHistory() {
     <div class="history-item" onclick="loadHistory(${i})">
       <div>
         <div class="history-item-name">${esc(h.name)}</div>
-        <div class="history-item-cat">${esc(h.category || '')} ${h.price ? '· ' + esc(h.price) : ''}</div>
+        <div class="history-item-cat">${esc(h.category || '')}${h.price ? ' · ' + esc(h.price) : ''}</div>
       </div>
       <span class="history-del" onclick="delHistory(event,${i})">×</span>
     </div>
@@ -503,12 +525,12 @@ function renderHistory() {
 }
 function loadHistory(i) {
   const h = history[i];
-  document.getElementById('pname').value = h.name || '';
-  document.getElementById('pcat').value = h.category || '';
-  document.getElementById('pprice').value = h.price || '';
-  document.getElementById('pdesc').value = h.desc || '';
-  document.getElementById('pmarket').value = h.market || 'Deutschland';
-  document.getElementById('pseason').value = h.season || '';
+  document.getElementById('pname').value    = h.name     || '';
+  document.getElementById('pcat').value     = h.category || '';
+  document.getElementById('pprice').value   = h.price    || '';
+  document.getElementById('pdesc').value    = h.desc     || '';
+  document.getElementById('pmarket').value  = h.market   || 'Deutschland';
+  document.getElementById('pseason').value  = h.season   || '';
 }
 function delHistory(e, i) {
   e.stopPropagation();
@@ -517,60 +539,50 @@ function delHistory(e, i) {
   renderHistory();
 }
 
-// ── STEPS UI ──
+// ═══════════════════════════════════════════════════════
+// STEPS UI
+// ═══════════════════════════════════════════════════════
+
 function initSteps() {
-  const el = document.getElementById('steps-container');
-  el.innerHTML = STEPS_DEF.map((s, i) => `
+  document.getElementById('steps-container').innerHTML = STEPS_DEF.map((s, i) => `
     <div class="step" id="step-${s.id}">
       <div class="step-icon">${i + 1}</div>
       <span>${s.label}</span>
+      <span class="step-meta" id="step-meta-${s.id}"></span>
     </div>
   `).join('');
   document.getElementById('steps-card').style.display = '';
 }
 function setStepActive(id) {
-  STEPS_DEF.forEach(s => {
-    const el = document.getElementById('step-' + s.id);
-    if (!el) return;
-    el.className = 'step' + (s.id === id ? ' active' : (isDone(s.id) ? ' done' : ''));
-  });
+  document.getElementById(`step-${id}`).className = 'step active';
+  document.getElementById(`step-meta-${id}`).textContent = '';
 }
-function setStepDone(id) {
-  const el = document.getElementById('step-' + id);
-  if (el) el.className = 'step done';
+function setStepDone(id, duration) {
+  document.getElementById(`step-${id}`).className = 'step done';
+  if (duration) document.getElementById(`step-meta-${id}`).textContent = duration + 's';
 }
-function isDone(id) { return !!results[id]; }
+function setStepError(id) {
+  document.getElementById(`step-${id}`).className = 'step error';
+  document.getElementById(`step-meta-${id}`).textContent = 'Fehler';
+}
 
-// ── RESULTS UI ──
+// ═══════════════════════════════════════════════════════
+// RESULTS UI
+// ═══════════════════════════════════════════════════════
+
 const TAB_DEFS = [
-  { id: 'analysis', label: 'Zielgruppe' },
-  { id: 'keywords', label: 'Keywords' },
+  { id: 'analysis',    label: 'Zielgruppe' },
+  { id: 'keywords',    label: 'Keywords' },
   { id: 'description', label: 'Produktbeschreibung' },
-  { id: 'ad', label: 'Werbeanzeige' },
-  { id: 'social', label: 'Social Media' },
-  { id: 'email', label: 'E-Mail' },
+  { id: 'ad',          label: 'Werbeanzeige' },
+  { id: 'social',      label: 'Social Media' },
+  { id: 'email',       label: 'E-Mail' },
 ];
-let activeTab = 'analysis';
 
 function initResultsUI() {
   document.getElementById('results-placeholder').style.display = 'none';
   document.getElementById('results-content').style.display = '';
   renderTabs();
-  renderPanels();
-}
-function renderTabs() {
-  document.getElementById('tabs').innerHTML = TAB_DEFS.map(t => `
-    <div class="tab${t.id === activeTab ? ' active' : ''}" onclick="switchTab('${t.id}')">${t.label}</div>
-  `).join('');
-}
-function switchTab(id) {
-  activeTab = id;
-  renderTabs();
-  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-  const panel = document.getElementById('panel-' + id);
-  if (panel) panel.classList.add('active');
-}
-function renderPanels() {
   document.getElementById('tab-panels').innerHTML = TAB_DEFS.map(t => `
     <div class="tab-panel${t.id === activeTab ? ' active' : ''}" id="panel-${t.id}">
       <div id="content-${t.id}"></div>
@@ -578,39 +590,57 @@ function renderPanels() {
   `).join('');
 }
 
-// ── COPY ──
-function copyText(text, btnEl) {
-  navigator.clipboard.writeText(text).then(() => {
-    btnEl.textContent = '✓ Kopiert';
-    btnEl.classList.add('copied');
-    setTimeout(() => { btnEl.textContent = 'Kopieren'; btnEl.classList.remove('copied'); }, 1600);
-  });
+function renderTabs(loadingId) {
+  document.getElementById('tabs').innerHTML = TAB_DEFS.map(t => {
+    let cls = 'tab';
+    if (t.id === activeTab) cls += ' active';
+    if (t.id === loadingId) cls += ' loading';
+    return `<div class="${cls}" onclick="switchTab('${t.id}')">${t.label}</div>`;
+  }).join('');
 }
 
-// ── ESCAPE HTML ──
-function esc(s) { return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function switchTab(id) {
+  activeTab = id;
+  renderTabs();
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  const panel = document.getElementById('panel-' + id);
+  if (panel) panel.classList.add('active');
+}
 
-// ── API CALL ──
-async function callClaude(prompt, onChunk) {
+// ═══════════════════════════════════════════════════════
+// API CALL
+// ═══════════════════════════════════════════════════════
+
+async function callClaude(prompt, onChunk, stepId) {
   const key = getApiKey();
   if (!key) throw new Error('Kein API-Key hinterlegt. Bitte oben rechts API-Key eingeben.');
+
   const resp = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'x-api-key': key, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
+    headers: {
+      'Content-Type': 'application/json',
+      'x-api-key': key,
+      'anthropic-version': '2023-06-01',
+      'anthropic-dangerous-direct-browser-access': 'true'
+    },
     body: JSON.stringify({
       model: 'claude-sonnet-4-20250514',
-      max_tokens: 1200,
+      max_tokens: TOKEN_LIMITS[stepId] || 1200,
       stream: true,
+      system: SYSTEM_PROMPT,
       messages: [{ role: 'user', content: prompt }]
     })
   });
+
   if (!resp.ok) {
     const err = await resp.json().catch(() => ({}));
     throw new Error(err.error?.message || `API-Fehler ${resp.status}`);
   }
+
   const reader = resp.body.getReader();
-  const dec = new TextDecoder();
-  let text = '';
+  const dec    = new TextDecoder();
+  let text     = '';
+
   while (true) {
     const { done, value } = await reader.read();
     if (done) break;
@@ -630,25 +660,30 @@ async function callClaude(prompt, onChunk) {
   return text;
 }
 
-// ── RENDER EACH RESULT ──
+// ═══════════════════════════════════════════════════════
+// RENDER FUNCTIONS
+// ═══════════════════════════════════════════════════════
+
 function renderAnalysis(text, streaming) {
   let parsed = {};
   try { parsed = JSON.parse(text); } catch { parsed = { raw: text }; }
 
   const fields = [
-    { key: 'altersgruppe', label: 'Altersgruppe' },
-    { key: 'geschlecht', label: 'Zielgeschlecht' },
-    { key: 'einkommen', label: 'Einkommensklasse' },
-    { key: 'lebenssituation', label: 'Lebenssituation' },
-    { key: 'kaufmotiv', label: 'Kaufmotiv' },
-    { key: 'schmerzen', label: 'Pain Points' },
+    { key: 'altersgruppe',   label: 'Altersgruppe' },
+    { key: 'geschlecht',     label: 'Zielgeschlecht' },
+    { key: 'einkommen',      label: 'Einkommensklasse' },
+    { key: 'lebenssituation',label: 'Lebenssituation' },
+    { key: 'kaufmotiv',      label: 'Kaufmotiv' },
+    { key: 'schmerzen',      label: 'Pain Points' },
     { key: 'positionierung', label: 'Positionierung' },
-    { key: 'tonalitaet', label: 'Empfohlene Tonalität' },
+    { key: 'tonalitaet',     label: 'Empfohlene Tonalität' },
   ];
 
   const el = document.getElementById('content-analysis');
+  if (!el) return;
+
   if (parsed.raw) {
-    el.innerHTML = `<div class="result-text${streaming?' streaming':''}">${esc(parsed.raw)}</div>`;
+    el.innerHTML = `<div class="result-text${streaming ? ' streaming' : ''}">${esc(parsed.raw)}</div>`;
     return;
   }
 
@@ -657,16 +692,20 @@ function renderAnalysis(text, streaming) {
       ${fields.map(f => `
         <div class="audience-item">
           <div class="audience-item-label">${f.label}</div>
-          <div class="audience-item-value">${esc(parsed[f.key] || (streaming ? '...' : '–'))}</div>
+          <div class="audience-item-value">${esc(parsed[f.key] || (streaming ? '…' : '–'))}</div>
         </div>
       `).join('')}
     </div>
     ${parsed.zusammenfassung ? `
       <div class="result-section" style="margin-top:1rem">
         <div class="result-section-title">Zusammenfassung</div>
-        <div class="result-text${streaming?' streaming':''}">${esc(parsed.zusammenfassung)}</div>
+        <div class="result-text${streaming ? ' streaming' : ''}">${esc(parsed.zusammenfassung)}</div>
       </div>
     ` : ''}
+    ${!streaming ? `<div class="action-row">
+      <button class="btn-regen" onclick="regenStep('analysis')">↺ Neu generieren</button>
+      <button class="btn-copy" onclick="copyText(${JSON.stringify(text)}, this)">Kopieren</button>
+    </div>` : ''}
   `;
 }
 
@@ -675,17 +714,20 @@ function renderKeywords(text, streaming) {
   try { parsed = JSON.parse(text); } catch { parsed = { raw: text }; }
 
   const el = document.getElementById('content-keywords');
+  if (!el) return;
+
   if (parsed.raw) {
-    el.innerHTML = `<div class="result-text${streaming?' streaming':''}">${esc(parsed.raw)}</div>`;
+    el.innerHTML = `<div class="result-text${streaming ? ' streaming' : ''}">${esc(parsed.raw)}</div>`;
     return;
   }
 
   const chipHtml = (arr, cls) => (arr || []).map(k => `<span class="chip ${cls}">${esc(k)}</span>`).join('');
+  const allKeywords = [...(parsed.haupt||[]),...(parsed.neben||[]),...(parsed.longtail||[])].join(', ');
 
   el.innerHTML = `
     <div class="result-section">
       <div class="result-section-title">Haupt-Keywords (SEO &amp; Ads)</div>
-      <div class="chips">${chipHtml(parsed.haupt, 'primary')}${streaming && !parsed.haupt?.length ? '<span style="color:#999;font-size:13px">Lädt...</span>' : ''}</div>
+      <div class="chips">${chipHtml(parsed.haupt, 'primary') || (streaming ? '<span style="color:#999;font-size:13px">Lädt…</span>' : '')}</div>
     </div>
     <div class="result-section">
       <div class="result-section-title">Neben-Keywords</div>
@@ -697,22 +739,294 @@ function renderKeywords(text, streaming) {
     </div>
     <div class="result-section">
       <div class="result-section-title">Negative Keywords (für Ads)</div>
-      <div class="chips">${chipHtml(parsed.negativ, 'secondary')}</div>
+      <div class="chips">${chipHtml(parsed.negativ, 'neg')}</div>
     </div>
-    ${parsed.haupt ? `<div class="copy-row"><button class="btn-copy" onclick="copyText('${esc([...(parsed.haupt||[]),...(parsed.neben||[]),...(parsed.longtail||[])].join(', '))}', this)">Kopieren</button></div>` : ''}
+    ${!streaming && parsed.haupt ? `<div class="action-row">
+      <button class="btn-regen" onclick="regenStep('keywords')">↺ Neu generieren</button>
+      <button class="btn-copy" onclick="copyText(${JSON.stringify(allKeywords)}, this)">Alle kopieren</button>
+    </div>` : ''}
   `;
 }
 
 function renderText(id, text, streaming) {
   const el = document.getElementById('content-' + id);
   if (!el) return;
+  const words = text.trim().split(/\s+/).filter(Boolean).length;
+  const warnClass = words < 50 ? 'warn' : words > 400 ? 'warn' : 'ok';
+
   el.innerHTML = `
-    <div class="result-text${streaming?' streaming':''}">${esc(text)}</div>
-    ${!streaming ? `<div class="copy-row"><button class="btn-copy" onclick="copyText(${JSON.stringify(text)}, this)">Kopieren</button></div>` : ''}
+    ${id === 'description' ? `
+      <div class="chain-notice">
+        ⟳ Basiert auf Zielgruppen-Analyse (Schritt 1) + Keywords (Schritt 2)
+      </div>` : ''}
+    ${id === 'ad' ? `
+      <div class="chain-notice">
+        ⟳ Basiert auf Zielgruppe (Schritt 1) + optimierten Keywords (Schritt 2)
+      </div>` : ''}
+    <div class="result-text${streaming ? ' streaming' : ''}">${esc(text)}</div>
+    ${!streaming ? `
+      <div class="word-count ${warnClass}">${words} Wörter</div>
+      <div class="action-row">
+        <button class="btn-regen" onclick="regenStep('${id}')">↺ Neu generieren</button>
+        <button class="btn-copy" onclick="copyText(${JSON.stringify(text)}, this)">Kopieren</button>
+      </div>` : ''}
   `;
 }
 
-// ── MAIN AGENT ──
+// ═══════════════════════════════════════════════════════
+// REGEN SINGLE STEP
+// ═══════════════════════════════════════════════════════
+
+async function regenStep(stepId) {
+  if (!currentProduct) return;
+  if (!getApiKey()) { openApiModal(); return; }
+
+  const el = document.getElementById('content-' + stepId);
+  if (el) el.innerHTML = `<div class="result-text streaming" style="color:var(--gray-400)">Wird neu generiert…</div>`;
+
+  const tab = document.querySelector(`.tab[onclick="switchTab('${stepId}')"]`);
+  if (tab) tab.classList.add('loading');
+
+  try {
+    const prompt = buildPrompt(stepId, currentProduct);
+    let raw = '';
+    await callClaude(prompt, (chunk) => {
+      raw = chunk;
+      try {
+        if (stepId === 'analysis') renderAnalysis(chunk, true);
+        else if (stepId === 'keywords') renderKeywords(chunk, true);
+        else renderText(stepId, chunk, true);
+      } catch {}
+    }, stepId);
+
+    resultData[stepId] = raw;
+    if (stepId === 'analysis') renderAnalysis(raw, false);
+    else if (stepId === 'keywords') renderKeywords(raw, false);
+    else renderText(stepId, raw, false);
+  } catch (err) {
+    if (el) el.innerHTML = `<div class="result-text" style="color:var(--red)">Fehler: ${esc(err.message)}</div>`;
+  }
+
+  if (tab) tab.classList.remove('loading');
+}
+
+// ═══════════════════════════════════════════════════════
+// PROMPT BUILDER
+// Chain-of-Thought: jeder Schritt bekommt Ergebnisse der Vorgänger
+// ═══════════════════════════════════════════════════════
+
+function buildPrompt(stepId, product) {
+  const lang = product.market === 'Österreich' ? 'Österreichisches Hochdeutsch' :
+               product.market === 'Schweiz'     ? 'Schweizer Hochdeutsch' : 'Deutsch';
+
+  // Basis-Kontext für alle Schritte (Constraint: strukturierte Eingabe)
+  const productCtx = `
+PRODUKTDATEN:
+- Name: ${product.name}
+- Kategorie: ${product.category || 'nicht angegeben'}
+- Preis: ${product.price || 'nicht angegeben'}
+- Details: ${product.desc || 'keine weiteren Details'}
+- Zielmarkt: ${product.market}
+- Saison/Anlass: ${product.season || 'allgemein'}
+- Marke: XXXLutz ("Bei XXXLutz lebe ich auf")`.trim();
+
+  // Chain-of-Thought Kontext: Vorherige Ergebnisse weitergeben
+  const chainAnalysis = resultData.analysis ? `
+ZIELGRUPPEN-ANALYSE (aus Schritt 1 – nutze diese Erkenntnisse):
+${resultData.analysis}` : '';
+
+  const chainKeywords = resultData.keywords ? `
+SEO-KEYWORDS (aus Schritt 2 – integriere diese gezielt):
+${resultData.keywords}` : '';
+
+  // ── SCHRITT 1: ZIELGRUPPE (Role + CoT) ──
+  if (stepId === 'analysis') {
+    return `${productCtx}
+
+Analysiere dieses Produkt systematisch in drei Denkschritten:
+1. Wer kauft dieses Produkt typischerweise? (demografisch + psychografisch)
+2. Welche Bedürfnisse und Pain Points hat diese Person?
+3. Wie sollte XXXLutz dieses Produkt positionieren und kommunizieren?
+
+Antworte NUR mit folgendem JSON (kein Text davor/danach, keine Backticks):
+{
+  "altersgruppe": "z.B. 30–55 Jahre",
+  "geschlecht": "z.B. Überwiegend weiblich (60%)",
+  "einkommen": "z.B. Mittleres Haushaltseinkommen (2.500–4.500 €/Monat)",
+  "lebenssituation": "z.B. Familien mit Kindern, Eigenheim oder große Mietwohnung",
+  "kaufmotiv": "z.B. Wohnqualität steigern, langlebige Qualität, Preis-Leistung",
+  "schmerzen": "z.B. Alte Couch zu klein, kein ausreichender Stauraum",
+  "positionierung": "z.B. Preis-Leistungs-Segment, moderne Optik für Familien",
+  "tonalitaet": "z.B. Warm, einladend, familienorientiert, ohne Fachjargon",
+  "zusammenfassung": "2-3 prägnante Sätze zur Gesamtzielgruppe"
+}`;
+  }
+
+  // ── SCHRITT 2: KEYWORDS (Role + Constraint) ──
+  if (stepId === 'keywords') {
+    return `${productCtx}
+${chainAnalysis}
+
+Erstelle ein vollständiges Keyword-Set für SEO und Google Ads.
+Berücksichtige dabei die Zielgruppen-Analyse aus Schritt 1.
+
+Antworte NUR mit folgendem JSON (kein Text davor/danach, keine Backticks):
+{
+  "haupt": ["6–8 wichtigste Haupt-Keywords für SEO und Ads"],
+  "neben": ["8–12 Neben-Keywords, Variationen und verwandte Begriffe"],
+  "longtail": ["6–8 Long-Tail Keywords (spezifische Suchanfragen, z.B. 'graues 3-Sitzer Sofa XXL günstig kaufen')"],
+  "negativ": ["6–8 negative Keywords für Google Ads, z.B. gebraucht, kostenlos, reparieren"]
+}`;
+  }
+
+  // ── SCHRITT 3: PRODUKTBESCHREIBUNG (Role + Few-Shot + Constraint + CoT) ──
+  if (stepId === 'description') {
+    return `${productCtx}
+${chainAnalysis}
+${chainKeywords}
+
+${FEW_SHOT_EXAMPLE}
+
+Schreibe jetzt eine hochwertige Produktbeschreibung für die XXXLutz-Website.
+
+Denke dabei in folgenden Schritten (Chain-of-Thought):
+1. Welche Kernbotschaft trifft die Zielgruppe emotional?
+2. Welche Features sind für sie am relevantesten?
+3. Wie integriere ich die Keywords natürlich in den Text?
+
+Anforderungen (Constraints):
+- Genau 3–4 Absätze
+- 150–200 Wörter gesamt
+- Beginne mit einem starken emotionalen Eröffnungssatz (kein Produktname am Anfang)
+- Hebe Vorteile und Gefühle hervor, nicht nur technische Features
+- Integriere 3–4 Haupt-Keywords aus Schritt 2 natürlich
+- Tonalität: ${resultData.analysis ? ((() => { try { return JSON.parse(resultData.analysis).tonalitaet || 'warm und einladend'; } catch { return 'warm und einladend'; } })()) : 'warm und einladend'}
+- Sprache: ${lang}
+
+Schreibe NUR den fertigen Text, keine Erklärungen oder Überschriften.`;
+  }
+
+  // ── SCHRITT 4: WERBEANZEIGE (Role + Constraint + CoT) ──
+  if (stepId === 'ad') {
+    return `${productCtx}
+${chainAnalysis}
+${chainKeywords}
+
+Erstelle eine Werbeanzeige für Google Ads und Display.
+Nutze die Zielgruppen-Erkenntnisse aus Schritt 1 und die Keywords aus Schritt 2.
+
+Halte dich EXAKT an diese Zeichenlimits (Constraint):
+HEADLINE 1: (max. 30 Zeichen – zähle genau)
+HEADLINE 2: (max. 30 Zeichen – zähle genau)
+HEADLINE 3: (max. 30 Zeichen – zähle genau)
+DESCRIPTION 1: (max. 90 Zeichen)
+DESCRIPTION 2: (max. 90 Zeichen)
+
+---
+
+ANZEIGENTEXT LANG:
+(2–3 Sätze für Display-Werbung / Printprospekt, emotional, mit Haupt-Keyword)
+
+---
+
+CALL-TO-ACTION:
+(1 kurzer handlungsauffordernder Satz)
+
+Sprache: ${lang}
+Schreibe NUR das Format oben, keine weiteren Erklärungen.`;
+  }
+
+  // ── SCHRITT 5: SOCIAL MEDIA (Role + Constraint) ──
+  if (stepId === 'social') {
+    return `${productCtx}
+${chainAnalysis}
+
+Erstelle Social-Media-Posts für drei Plattformen.
+Passe Ton und Länge an jede Plattform an (Constraint).
+
+📘 FACEBOOK:
+(3–5 Sätze, emotional, Storytelling-Ansatz, 1–2 Emojis, endet mit Frage oder CTA)
+
+📸 INSTAGRAM CAPTION:
+(2–3 kurze Sätze + Leerzeile + Hashtags in eigener Zeile, 20–25 relevante Hashtags)
+
+💼 LINKEDIN:
+(3–4 Sätze, professionell, Qualitäts- und Lifestyle-Fokus, ohne Emojis)
+
+Sprache: ${lang}
+Schreibe NUR die Posts im obigen Format, keine Erklärungen.`;
+  }
+
+  // ── SCHRITT 6: E-MAIL (Role + Constraint) ──
+  if (stepId === 'email') {
+    return `${productCtx}
+${chainAnalysis}
+${chainKeywords}
+
+Erstelle einen vollständigen E-Mail-Kampagnentext.
+Struktur (Constraint): Hook → Produktvorstellung → Vorteile/Emotionen → CTA
+
+BETREFF: (max. 50 Zeichen, neugierig machend, kein Clickbait)
+PREHEADER: (max. 90 Zeichen, ergänzt den Betreff)
+
+---
+
+E-MAIL-TEXT:
+(Persönliche Anrede, 3–4 Absätze, CTA-Button-Text am Ende in eckigen Klammern z.B. [Jetzt entdecken →])
+
+Tonalität: ${resultData.analysis ? ((() => { try { return JSON.parse(resultData.analysis).tonalitaet || 'warm und persönlich'; } catch { return 'warm und persönlich'; } })()) : 'warm und persönlich'}
+Sprache: ${lang}
+Schreibe NUR den E-Mail-Inhalt, keine Erklärungen.`;
+  }
+
+  return '';
+}
+
+// ═══════════════════════════════════════════════════════
+// EXPORT ALL
+// ═══════════════════════════════════════════════════════
+
+function exportAll() {
+  if (!currentProduct) return;
+  const sections = TAB_DEFS.map(t => {
+    const el = document.getElementById('content-' + t.id);
+    const raw = el ? el.innerText.replace(/↺ Neu generieren|Kopieren|Alle kopieren|Wörter.*|Basiert auf.*/g, '').trim() : '';
+    return `${'='.repeat(50)}\n${t.label.toUpperCase()}\n${'='.repeat(50)}\n\n${raw}\n\n`;
+  }).join('');
+
+  const header = `XXXLutz KI-Textagent – Export\nProdukt: ${currentProduct.name}\nGeneriert: ${new Date().toLocaleString('de-DE')}\n\n`;
+  const blob = new Blob([header + sections], { type: 'text/plain;charset=utf-8' });
+  const a    = document.createElement('a');
+  a.href     = URL.createObjectURL(blob);
+  a.download = `XXXLutz_${currentProduct.name.replace(/\s+/g,'_')}_Texte.txt`;
+  a.click();
+}
+
+// ═══════════════════════════════════════════════════════
+// COPY
+// ═══════════════════════════════════════════════════════
+
+function copyText(text, btnEl) {
+  navigator.clipboard.writeText(text).then(() => {
+    const orig = btnEl.textContent;
+    btnEl.textContent = '✓ Kopiert';
+    btnEl.classList.add('copied');
+    setTimeout(() => { btnEl.textContent = orig; btnEl.classList.remove('copied'); }, 1600);
+  });
+}
+
+// ═══════════════════════════════════════════════════════
+// HTML ESCAPE
+// ═══════════════════════════════════════════════════════
+
+function esc(s) {
+  return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ═══════════════════════════════════════════════════════
+// MAIN AGENT
+// ═══════════════════════════════════════════════════════
+
 async function runAgent() {
   const name = document.getElementById('pname').value.trim();
   if (!name) { document.getElementById('pname').focus(); return; }
@@ -721,223 +1035,86 @@ async function runAgent() {
   const product = {
     name,
     category: document.getElementById('pcat').value,
-    price: document.getElementById('pprice').value.trim(),
-    desc: document.getElementById('pdesc').value.trim(),
-    market: document.getElementById('pmarket').value,
-    season: document.getElementById('pseason').value.trim(),
+    price:    document.getElementById('pprice').value.trim(),
+    desc:     document.getElementById('pdesc').value.trim(),
+    market:   document.getElementById('pmarket').value,
+    season:   document.getElementById('pseason').value.trim(),
   };
 
-  saveHistory(product);
-  results = {};
-  activeTab = 'analysis';
+  currentProduct = product;
+  resultData     = {};
+  activeTab      = 'analysis';
 
-  // UI setup
+  saveHistory(product);
+
+  // UI reset
   const btn = document.getElementById('gen-btn');
   btn.disabled = true;
-  btn.innerHTML = '<div class="spinner"></div> Analysiert...';
+  document.getElementById('export-btn').style.display = 'none';
   initSteps();
   initResultsUI();
 
-  const productCtx = `
-Produktname: ${product.name}
-Kategorie: ${product.category || 'nicht angegeben'}
-Preis: ${product.price || 'nicht angegeben'}
-Details: ${product.desc || 'keine weiteren Details'}
-Zielmarkt: ${product.market}
-Saison/Anlass: ${product.season || 'allgemein'}
-Marke: XXXLutz (Möbelhaus, Slogan: "Bei XXXLutz lebe ich auf")
-  `.trim();
+  // Run all 6 steps sequentially
+  // Each step passes its result into the next via resultData + buildPrompt()
+  for (let i = 0; i < STEPS_DEF.length; i++) {
+    const step = STEPS_DEF[i];
+    const t0   = Date.now();
 
-  try {
-    // ── STEP 1: ZIELGRUPPE ──
-    setStepActive('analysis');
-    switchTab('analysis');
+    // Update button label to show progress
+    btn.innerHTML = `<div class="spinner"></div> Schritt ${i+1}/6: ${step.label.split(' ').slice(0,3).join(' ')}…`;
 
-    let analysisRaw = '';
-    await callClaude(`Du bist ein Marketing-Experte für XXXLutz. Analysiere das folgende Produkt und gib eine JSON-Antwort zurück – NUR JSON, kein Text davor oder danach, keine Backticks.
+    setStepActive(step.id);
 
-${productCtx}
+    // Switch tab to current step so user can watch streaming
+    if (i === 0) switchTab(step.id);
+    renderTabs(step.id);
 
-Antworte mit folgendem JSON-Schema:
-{
-  "altersgruppe": "z.B. 30–55 Jahre",
-  "geschlecht": "z.B. Überwiegend weiblich (60%)",
-  "einkommen": "z.B. Mittleres Haushaltseinkommen (2.500–4.500 €/Monat)",
-  "lebenssituation": "z.B. Familien mit Kindern, Eigenheim oder große Mietwohnung",
-  "kaufmotiv": "z.B. Wohnqualität steigern, Komfort, langlebige Qualität",
-  "schmerzen": "z.B. Alter Couch zu klein, keine Stauraumlösung",
-  "positionierung": "z.B. Preis-Leistungs-Segment, Qualität mit gutem Preis",
-  "tonalitaet": "z.B. Warm, einladend, familienorientiert",
-  "zusammenfassung": "2-3 Sätze Zusammenfassung der Zielgruppe"
-}`, (chunk) => {
-      analysisRaw = chunk;
-      try { renderAnalysis(chunk, true); } catch {}
-    });
+    try {
+      const prompt = buildPrompt(step.id, product);
+      let raw = '';
 
-    renderAnalysis(analysisRaw, false);
-    setStepDone('analysis');
-    results.analysis = true;
+      await callClaude(prompt, (chunk) => {
+        raw = chunk;
+        try {
+          if (step.id === 'analysis')  renderAnalysis(chunk, true);
+          else if (step.id === 'keywords') renderKeywords(chunk, true);
+          else renderText(step.id, chunk, true);
+        } catch {}
+      }, step.id);
 
-    // ── STEP 2: KEYWORDS ──
-    setStepActive('keywords');
-    switchTab('keywords');
+      // Store result for chain-of-thought context
+      resultData[step.id] = raw;
 
-    let kwRaw = '';
-    await callClaude(`Du bist ein SEO- und Google-Ads-Experte für XXXLutz. Erstelle Keywords für dieses Produkt. Antworte NUR mit JSON, kein Text, keine Backticks.
+      // Final render
+      if (step.id === 'analysis')       renderAnalysis(raw, false);
+      else if (step.id === 'keywords')  renderKeywords(raw, false);
+      else                              renderText(step.id, raw, false);
 
-${productCtx}
+      const duration = ((Date.now() - t0) / 1000).toFixed(1);
+      setStepDone(step.id, duration);
 
-JSON-Schema:
-{
-  "haupt": ["5-8 wichtigste Keywords, z.B. Sofa kaufen, 3-Sitzer Sofa"],
-  "neben": ["6-10 Neben-Keywords, Variationen und verwandte Begriffe"],
-  "longtail": ["5-8 Long-Tail Keywords, z.B. graues 3-Sitzer Sofa XXL günstig kaufen"],
-  "negativ": ["5-8 negative Keywords für Google Ads, z.B. gebraucht, kostenlos, reparieren"]
-}`, (chunk) => {
-      kwRaw = chunk;
-      try { renderKeywords(chunk, true); } catch {}
-    });
-
-    try { renderKeywords(kwRaw, false); } catch { renderKeywords(kwRaw, false); }
-    setStepDone('keywords');
-    results.keywords = true;
-
-    // ── STEP 3: PRODUKTBESCHREIBUNG ──
-    setStepActive('description');
-    switchTab('description');
-
-    let descRaw = '';
-    await callClaude(`Du bist ein erfahrener Texter für XXXLutz. Schreibe eine hochwertige Produktbeschreibung für die Website.
-
-${productCtx}
-
-Anforderungen:
-- 3-4 Absätze, SEO-optimiert
-- Beginne mit einem starken Eröffnungssatz
-- Hebe Vorteile und Gefühle hervor (nicht nur Features)
-- Natürlich integrierte Keywords
-- Marke XXXLutz positiv einbauen
-- Sprache: ${product.market === 'Österreich' ? 'Österreichisches Hochdeutsch' : product.market === 'Schweiz' ? 'Schweizer Hochdeutsch' : 'Deutsch'}
-
-Schreibe NUR den fertigen Text, keine Einleitung.`, (chunk) => {
-      descRaw = chunk;
-      renderText('description', chunk, true);
-    });
-
-    renderText('description', descRaw, false);
-    setStepDone('description');
-    results.description = true;
-
-    // ── STEP 4: WERBEANZEIGE ──
-    setStepActive('ad');
-    switchTab('ad');
-
-    let adRaw = '';
-    await callClaude(`Du bist ein Werbetexter für XXXLutz. Erstelle eine Werbeanzeige (z.B. für Google Ads Display oder Printprospekt).
-
-${productCtx}
-
-Format:
-HEADLINE 1: (max. 30 Zeichen)
-HEADLINE 2: (max. 30 Zeichen)
-HEADLINE 3: (max. 30 Zeichen)
-DESCRIPTION 1: (max. 90 Zeichen)
-DESCRIPTION 2: (max. 90 Zeichen)
-
----
-
-ANZEIGENTEXT LANG:
-(2-3 Sätze für Display-Werbung / Prospekt)
-
----
-
-CALL-TO-ACTION:
-(1 Satz, handlungsauffordernd)
-
-Sprache: ${product.market === 'Österreich' ? 'Österreichisches Hochdeutsch' : product.market === 'Schweiz' ? 'Schweizer Hochdeutsch' : 'Deutsch'}
-Schreibe NUR das Format oben, keine weiteren Erklärungen.`, (chunk) => {
-      adRaw = chunk;
-      renderText('ad', chunk, true);
-    });
-
-    renderText('ad', adRaw, false);
-    setStepDone('ad');
-    results.ad = true;
-
-    // ── STEP 5: SOCIAL MEDIA ──
-    setStepActive('social');
-    switchTab('social');
-
-    let socialRaw = '';
-    await callClaude(`Du bist Social-Media-Manager für XXXLutz. Erstelle Posts für verschiedene Plattformen.
-
-${productCtx}
-
-Format:
-
-📘 FACEBOOK:
-(3-5 Sätze, emotional, Storytelling, mit Emoji)
-
-📸 INSTAGRAM CAPTION:
-(2-3 Sätze + Hashtags in eigener Zeile, max. 25 relevante Hashtags)
-
-💼 LINKEDIN:
-(professionell, Qualitäts-/Lifestyle-Fokus, 3-4 Sätze)
-
-Sprache: ${product.market === 'Österreich' ? 'Österreichisches Hochdeutsch' : product.market === 'Schweiz' ? 'Schweizer Hochdeutsch' : 'Deutsch'}
-Schreibe NUR die Posts im obigen Format.`, (chunk) => {
-      socialRaw = chunk;
-      renderText('social', chunk, true);
-    });
-
-    renderText('social', socialRaw, false);
-    setStepDone('social');
-    results.social = true;
-
-    // ── STEP 6: E-MAIL ──
-    setStepActive('email');
-    switchTab('email');
-
-    let emailRaw = '';
-    await callClaude(`Du bist E-Mail-Marketing-Experte für XXXLutz. Erstelle einen Kampagnen-E-Mail-Text.
-
-${productCtx}
-
-Format:
-BETREFF: (max. 50 Zeichen, neugierig machend)
-PREHEADER: (max. 90 Zeichen, ergänzend)
-
----
-
-E-MAIL-TEXT:
-(Anrede, 3-4 Absätze, CTA-Button-Text am Ende)
-Struktur: Hook → Produktvorstellung → Vorteile/Emotionen → CTA
-
-Sprache: ${product.market === 'Österreich' ? 'Österreichisches Hochdeutsch' : product.market === 'Schweiz' ? 'Schweizer Hochdeutsch' : 'Deutsch'}
-Schreibe NUR den E-Mail-Inhalt ohne weitere Erklärungen.`, (chunk) => {
-      emailRaw = chunk;
-      renderText('email', chunk, true);
-    });
-
-    renderText('email', emailRaw, false);
-    setStepDone('email');
-    results.email = true;
-
-    // All done
-    document.getElementById('steps-card').style.display = 'none';
-    switchTab('analysis');
-
-  } catch (err) {
-    document.getElementById('steps-card').innerHTML = `
-      <div style="color:var(--red);font-size:14px;padding:.5rem">
-        ✕ Fehler: ${esc(err.message)}
+    } catch (err) {
+      // Step failed: mark as error, show message, but CONTINUE to next step
+      setStepError(step.id);
+      const el = document.getElementById('content-' + step.id);
+      if (el) el.innerHTML = `<div class="result-text" style="color:var(--red)">
+        ⚠ Fehler in diesem Schritt: ${esc(err.message)}<br>
+        <button class="btn-regen" style="margin-top:.75rem" onclick="regenStep('${step.id}')">↺ Erneut versuchen</button>
       </div>`;
+      resultData[step.id] = ''; // empty so next steps still work
+    }
   }
+
+  // All done
+  document.getElementById('steps-card').style.display = 'none';
+  document.getElementById('export-btn').style.display = '';
+  renderTabs();
+  switchTab('analysis');
 
   btn.disabled = false;
   btn.innerHTML = `
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="white" stroke-width="1.5"/><path d="M5.5 8l2 2 3-3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    Analyse & Texte generieren`;
+    Neue Analyse starten`;
 }
 
 // ── INIT ──
