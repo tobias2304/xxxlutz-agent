@@ -703,7 +703,6 @@ function renderAnalysis(text, streaming) {
       </div>
     ` : ''}
     ${!streaming ? `<div class="action-row">
-      <button class="btn-regen" onclick="regenStep('analysis')">↺ Neu generieren</button>
       <button class="btn-copy" onclick="copyText(${JSON.stringify(text)}, this)">Kopieren</button>
     </div>` : ''}
   `;
