@@ -989,16 +989,45 @@ Schreibe NUR den E-Mail-Inhalt, keine Erklärungen.`;
 function exportAll() {
   if (!currentProduct) return;
 
-  const sections = TAB_DEFS.map(t => {
-    const el = document.getElementById('content-' + t.id);
-    const raw = el ? el.innerText
-      .replace(/↺ Neu generieren|Kopieren|Alle kopieren|\d+ Wörter.*|Basiert auf.*/g, '')
-      .trim() : '';
-    return `
-      <div class="section">
-        <h2>${t.label}</h2>
-        <div class="section-body">${raw.replace(/\n/g, '<br>')}</div>
-      </div>`;
+const sections = TAB_DEFS.map(t => {
+    const raw = resultData[t.id] || '';
+    let body = '';
+
+    if (t.id === 'keywords') {
+      // Keywords: JSON parsen und sauber als Listen ausgeben
+      try {
+        const kw = JSON.parse(raw);
+        body = `
+          <div class="kw-group"><strong>Haupt-Keywords:</strong><br>${(kw.haupt||[]).join(' · ')}</div>
+          <div class="kw-group"><strong>Neben-Keywords:</strong><br>${(kw.neben||[]).join(' · ')}</div>
+          <div class="kw-group"><strong>Long-Tail Keywords:</strong><br>${(kw.longtail||[]).join(' · ')}</div>
+          <div class="kw-group"><strong>Negative Keywords:</strong><br>${(kw.negativ||[]).join(' · ')}</div>`;
+      } catch {
+        body = `<div class="section-body">${raw.replace(/\n/g,'<br>')}</div>`;
+      }
+    } else if (t.id === 'analysis') {
+      // Zielgruppe: JSON parsen und als Tabelle ausgeben
+      try {
+        const a = JSON.parse(raw);
+        const fields = [
+          ['Altersgruppe', a.altersgruppe], ['Zielgeschlecht', a.geschlecht],
+          ['Einkommensklasse', a.einkommen], ['Lebenssituation', a.lebenssituation],
+          ['Kaufmotiv', a.kaufmotiv], ['Pain Points', a.schmerzen],
+          ['Positionierung', a.positionierung], ['Tonalität', a.tonalitaet]
+        ];
+        body = `<table class="analysis-table">
+          ${fields.map(([k,v]) => `<tr><td class="label">${k}</td><td>${v||'–'}</td></tr>`).join('')}
+        </table>
+        ${a.zusammenfassung ? `<div class="summary">${a.zusammenfassung}</div>` : ''}`;
+      } catch {
+        body = `<div class="section-body">${raw.replace(/\n/g,'<br>')}</div>`;
+      }
+    } else {
+      // Alle anderen: plain text
+      body = `<div class="section-body">${raw.replace(/\n/g,'<br>')}</div>`;
+    }
+
+    return `<div class="section"><h2>${t.label}</h2>${body}</div>`;
   }).join('');
 
   const html = `<!DOCTYPE html>
@@ -1023,6 +1052,14 @@ function exportAll() {
     .header { border-radius: 0; }
     .section { break-inside: avoid; }
   }
+  .kw-group { padding: .75rem 1rem; border-bottom: 1px solid #f0f0f0; font-size: 14px; line-height: 1.8; }
+  .kw-group:last-child { border-bottom: none; }
+  .kw-group strong { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: #999; display: block; margin-bottom: 4px; }
+  .analysis-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .analysis-table tr { border-bottom: 1px solid #f0f0f0; }
+  .analysis-table td { padding: .6rem 1rem; vertical-align: top; }
+  .analysis-table .label { font-weight: 600; color: #666; font-size: 12px; text-transform: uppercase; letter-spacing: .04em; white-space: nowrap; width: 160px; }
+  .summary { padding: .75rem 1rem; background: #fdecea; border-top: 2px solid #E30613; font-size: 14px; line-height: 1.7; font-style: italic; }
 </style>
 </head>
 <body>
